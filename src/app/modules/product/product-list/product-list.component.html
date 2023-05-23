@@ -1,0 +1,103 @@
+
+<div class="p-6 mt-12">
+  <div class="card">
+    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+    <p-toast></p-toast>
+    <p-toolbar styleClass="mb-4 gap-2">
+      <ng-template pTemplate="left">
+        <button
+          pButton
+          pRipple
+          label="Create"
+          icon="pi pi-plus"
+          class="p-button-help"
+          (click)="onCreate()"
+        ></button>
+      </ng-template>
+    </p-toolbar>
+
+    <p-table
+      #dt
+      [value]="products"
+      [rows]="10"
+      [paginator]="true"
+      [globalFilterFields]="['name', 'price', 'description', 'sku']"
+      [tableStyle]="{ 'min-width': '75rem' }"
+      [rowHover]="true"
+      dataKey="id"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [showCurrentPageReport]="true"
+    >
+      <ng-template pTemplate="caption"> </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="name" style="min-width: 15rem">
+            Name <p-sortIcon field="name"></p-sortIcon>
+          </th>
+
+          <th pSortableColumn="price">
+            Price <p-sortIcon field="price"></p-sortIcon>
+          </th>
+          <th pSortableColumn="description">
+            Description <p-sortIcon field="description"></p-sortIcon>
+          </th>
+          <th pSortableColumn="sku">
+            Sku <p-sortIcon field="sku"></p-sortIcon>
+          </th>
+
+          <th></th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price | rupiahFormat }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.sku }}</td>
+          <td>{{ product.qty }}</td>
+          <td>
+            <div class="flex space-x-2">
+              <div>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-list"
+                  class="p-button-rounded p-button-warning mr-2"
+                  (click)="view(product._id)"
+                ></button>
+              </div>
+              <div>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-pencil"
+                  class="p-button-rounded p-button-success mr-2"
+                  (click)="openDialog(product._id)"
+                ></button>
+              </div>
+              <div>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-danger"
+                  (click)="onDelete(product._id)"
+                ></button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+          In total there are {{ products ? products.length : 0 }} products.
+        </div>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<div class="flex justify-center">
+
+</div>

@@ -1,0 +1,72 @@
+<div class="container p-[100px]">
+  <p-card header="Title" class="flex justify-center">
+    <form [formGroup]="form">
+      <div class="m-0 w-[800px]">
+        <div class="flex flex-col space-y-6 mb-4">
+          <div>
+            <span class="p-float-label">
+              <input
+                pInputText
+                id="name"
+                class="w-full"
+                formControlName="name"
+              />
+              <label htmlFor="name">Name</label>
+            </span>
+          </div>
+          <div>
+            <span class="p-float-label">
+              <input
+                pInputText
+                id="price"
+                class="w-full"
+                formControlName="price"
+              />
+              <label htmlFor="price">Price</label>
+            </span>
+          </div>
+          <div>
+            <span class="p-float-label">
+              <input
+                pInputText
+                id="quantity"
+                class="w-full"
+                formControlName="quantity"
+              />
+              <label htmlFor="quantity">Quantity</label>
+            </span>
+          </div>
+          <div>
+            <span class="p-float-label">
+              <input
+                pInputText
+                id="username"
+                class="w-full"
+                formControlName="sku"
+              />
+              <label htmlFor="sku">SKU</label>
+            </span>
+          </div>
+          <div>
+            <span class="p-float-label">
+              <input
+                pInputText
+                id="description"
+                class="w-full"
+                formControlName="description"
+              />
+              <label htmlFor="description">Description</label>
+            </span>
+          </div>
+        </div>
+        <app-submit-button
+            label="Saved"
+            icon="pi pi-check"
+            class="p-button-help"
+            (clicked)="onSubmit()"
+            [isDisabled]="!form.valid"
+        ></app-submit-button>
+      </div>
+    </form>
+  </p-card>
+</div>
